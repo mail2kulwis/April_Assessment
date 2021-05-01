@@ -1,0 +1,137 @@
+
+package com.assess;
+import java.io.File;
+import java.util.Arrays;
+import java.util.Collections;
+import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
+
+public class DuserFiles {
+
+	static Scanner scanner = new Scanner(System.in);
+	
+public static void optOne() {//1.  View all the files in ascending order"
+	try {
+		File fileDir = new File("/Users/kulwindersj/Documents/Java_Training/SelfLearning/Practice");
+		List<String> listFile = Arrays.asList(fileDir.list());
+		Collections.sort(listFile);
+		System.out.println("Sorting by filename in ascendig order");
+		for(String s:listFile) {
+			System.out.println(s);}
+		}catch(Exception e) {System.out.println("Error found");}
+	optFive();
+}
+	
+public static void optTwo() {//2.  Add a new file to the system"
+	int x = 1;
+	do{
+		try {
+		System.out.println("Enter the file name you want to create");
+		Scanner input = new Scanner(System.in);
+		String filename = input.nextLine();
+		filename = filename+".txt";
+		String filepath = ("/Users/kulwindersj/Documents/Java_Training/SelfLearning/Practice/"+filename);
+		File file = new File(filepath);
+		if(file.exists()) {
+		 System.out.println(filename+" already exists, please give a different name");}
+		else {file.createNewFile();
+		System.out.println("File created - "+file.getName() );}
+		x=2;}
+		catch(IOException e) {System.out.println("An error occurred"); e.printStackTrace();}
+	}	while(x==1);
+	optFive();
+}
+
+public static void optThree() {//3.  Delete an existing file to the system
+	Scanner input = new Scanner(System.in);
+	try {
+		System.out.println("Enter the name of the file you want to delete");
+		String filename = input.nextLine();
+		filename = filename + ".txt";
+		String filepath= ("/Users/kulwindersj/Documents/Java_Training/SelfLearning/Practice/"+filename);
+		File file = new File(filepath);
+		if(file.exists()) {file.delete(); System.out.println("File deleted - "+filename);  }
+		else {System.out.println("File not found " +filename);}}
+	catch(Exception e) {
+		System.out.println("An error occurred");e.printStackTrace();
+		
+	}}
+	
+	public static void optFour() {//4.  Search for an existing file in the system"
+		Scanner input = new Scanner(System.in);
+		try {
+			System.out.println("Enter the name of the file you want to search");
+			String filename = input.nextLine();
+			filename = filename + ".txt";
+			String filepath= ("/Users/kulwindersj/Documents/Java_Training/SelfLearning/Practice/"+filename);
+			File file = new File(filepath);
+			if(!file.exists()) {System.out.println("File not found");}
+			else {System.out.println("File exists ");}
+			}
+		catch(Exception e) {
+			System.out.println("An error occurred");e.printStackTrace();}
+		
+	}
+
+	public static void optFive() {//5.  Go back to Master Menu"
+	    int y=0;
+		do{
+		System.out.println("+-------------------------------------------------------------+");
+		System.out.println("|               Welcome to the UserFiles System               |");
+		System.out.println("|                  designed by Kulwinder S J                  |");
+		System.out.println("+-------------------------------------------------------------+");
+	    Scanner keyIn = new Scanner(System.in);
+
+	    System.out.print("Press the enter key to continue\n");
+	    keyIn.nextLine();
+	    
+	    System.out.println("Select the service number for the service that you wish to perform");
+	    System.out.println("1.  View all the files in ascending order");
+	    System.out.println("2.  Add a new file to the system");
+	    System.out.println("3.  Delete an existing file to the system");
+	    System.out.println("4.  Search for an existing file in the system");
+	    System.out.println("5.  Go back to Master Menu");
+	    System.out.println("6.  Exit\n");
+	    y++;}
+		while (y<1);
+	    
+
+	}
+
+public static void main(String[] args) {
+
+	optFive();//Master Menu
+//    Scanner scanner = new Scanner(System.in);
+    int choice = scanner.nextInt();
+
+int i=0;
+do
+{
+    switch (choice) {
+        case 1: {optOne(); //1.  View all the files in ascending order"
+        	break;}
+        
+    	case 2:{optTwo();//2.  Add a new file to the system
+    		break;}
+    	
+    	case 3:{optThree();//3.  Delete an existing file to the system
+    		break;}
+    	
+    	case 4:{ optFour();//4.  Search for an existing file in the system
+    		break;}
+		
+    	case 5:{ optFive();//5. Master Menu
+			break;}
+	    	
+    	case 6:{System.out.println("Exiting Program...");
+			System.exit(0);
+			break;}
+  	
+    	default: {
+    		System.out.println("This is not a valid option. Select any option from 1 to 6");	
+    		break;}
+    	
+    }i++;
+}while(i<1);} 
+}
